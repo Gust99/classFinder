@@ -15,7 +15,7 @@ import NewClase from './components/pages/clase/newClase'
 import MateriaParticularList from './components/materiaParticularList/materiaParticularList';
 import MateriaParticular from './components/pages/materiaParticular/materiaParticular';
 import NewMateriaParticular from './components/pages/materiaParticular/newMateriaParticular';
-
+import ProfesorClaseList from './components/profesorClaseList/profesorClaseList';
 import Reserva from './components/pages/reservas/reservas';
 import NewReserva from './components/pages/reservas/newReserva';
 
@@ -33,9 +33,10 @@ function App() {
               <Route path='/clases' element={<ClaseList/>}/>
               <Route path='/clase/:claseId' element={<Clase/>}/>
               <Route path='/newClase' element={<NewClase/>}/>
-              <Route path='/materiasParticulares' element={<MateriaParticularList/>}/>
+              <Route path='/materiasParticulares/:profesorId' element={<MateriaParticularList/>}/>
               <Route path='/materiaParticular/:materiaParticularId' element={<MateriaParticular/>}/>
               <Route path='/newMateriaParticular' element={<NewMateriaParticular/>}/>
+              <Route path='/clasesProfesor/:profesorId/:materiaParticularId' element={<ProfesorClaseList/>}/>
               <Route path='/Reserva' element={<Reserva/>}/>
               <Route path='/newReserva' element={<NewReserva/>}/>
           </Routes>

@@ -2,23 +2,28 @@ import React ,{ useState, useEffect } from 'react'
 import { DataGrid} from '@material-ui/data-grid'
 import './materiaParticularList.css'
 import {userRows} from '../../dataTest'
-import {Link} from 'react-router-dom'
+import {Link, useLocation} from 'react-router-dom'
+import ModalClases from "../modals/ModalClases";
 import { DeleteOutlineOutlined } from "@material-ui/icons"
 
 export default function MateriaParticularList() {
     const [data, setData] = useState([]);
+    const location = useLocation();
+  //  const materiaParticular = location.state.materiaParticularSend;
+  //  const id_usuario = materiaParticular.id;
+    const id_usuario = "61a2256e6791151df4f0a508";
     
     useEffect(() => {
-        const getMateriasParticulares = () =>{
-            fetch('http://localhost:3800/api/getMateriasParticulares')
+        const getMateriasProfesor = () =>{
+            fetch('http://localhost:3800/api/getMateriasProfesor/'+id_usuario)
             .then(res => res.json())
             .then(res => {
                 if(res) {
-                    setData(res.materia_particular)
+                    setData(res.materiasProfesor)
                 }
             })
         }
-        getMateriasParticulares()
+        getMateriasProfesor()
     }, [])
     
     const handleDelete = (id) =>{
@@ -54,7 +59,27 @@ export default function MateriaParticularList() {
                     </>
                 )
             }
+        },
+        { field: 'crear_clases', headerName: 'Asignar', width: 150, headerStyle: {textjustify: 'center'},
+        renderCell: (params) =>{
+            return(
+                <>  
+                     <ModalClases clase={params.row._id}/>
+                </>
+            )
         }
+        },
+        { field: 'ver_clases', headerName: 'Clases', width: 150,
+            renderCell: (params) =>{
+                return(
+                    <>  
+                        <Link to={"/clasesProfesor/"+id_usuario+"/"+params.row._id} state={{ claseSend : params.row }}>
+                            <button className='materiaParticularListEdit'>Ver Clases</button>
+                        </Link>
+                    </>
+                )
+            }
+        },
       ];
       
         return (

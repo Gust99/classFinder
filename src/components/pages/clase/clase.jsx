@@ -22,8 +22,9 @@ export default function Clase() {
     const [costo_hora, setCostoHora] = useState(clase.costo_hora);
     const [direccion, setDireccion] = useState(clase.direccion);
     const [descripcion, setDescripcion] = useState(clase.descripcion);
-    const id_usuario = "619ff56d24cfbf08d311601d";
-    const id_materia_particular = "61a00db882bc878910015cf3";
+    const id_usuario = "61a2256e6791151df4f0a508";
+//    const id_materia_particular = "61a00db882bc878910015cf3";
+    const id_materia_particular = clase.id_materia_particular;
 
     const handleLimite = (e) =>{
         setLimite(e.target.value);
