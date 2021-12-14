@@ -1,0 +1,52 @@
+.topbar{
+    width: 100%;
+    height: 50px;
+    background-color: rgb(43, 82, 189);
+    /*Topbar FIJO*/
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    padding: 5px;
+    border-bottom: 1px solid lightgray;
+}
+
+.topbarWrapper{
+    height: 100%;
+    padding: 0px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topRight{
+    display: flex;
+    align-items: center;
+}
+
+.logo{
+    font-weight: bold;
+    font-size: 30px;
+    color:  white;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.topbarIconContainer{
+    position: relative;
+    cursor: pointer;
+    margin-right: 15px;
+    color: white;
+}
+
+.Link {
+    text-decoration: none;
+    color: white;
+}
+
+.avatar{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid black;
+}

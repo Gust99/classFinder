@@ -1,0 +1,52 @@
+.box{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.boxItem{
+    flex:1;
+    margin: 0px 20px;
+    padding: 30px;
+    border-radius: 15px;
+    cursor: pointer;
+    -webkit-box-shadow: 1px 1px 33px -3px #000000; 
+    box-shadow: 1px 1px 33px -3px #000000;
+}
+
+.boxTitle{
+    font-size: 20px;
+}
+
+.boxContainer{
+    margin: 10px 0px;
+    display: flex;
+    align-content: center;
+    
+}
+
+.boxMoney{
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.boxRate{
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.boxIcon{
+    font-size: 15px;
+    margin-left: 5px;
+    color: greenyellow;
+}
+
+.boxIcon.negative{
+    color: red;
+}
+
+.downText{
+    font-size: 14px;
+    color: gray;
+}

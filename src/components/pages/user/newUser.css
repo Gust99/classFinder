@@ -1,0 +1,40 @@
+.form-inner {
+    padding: 55px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    transition: 0.2s;
+    background-color: rgba(211, 211, 211,0.05);
+}
+
+.form-group {
+    padding: 5px;
+    margin: 5px;
+}
+
+#button {
+    width: 100%;
+    border-radius: 15px;
+    background-color: green;
+    border: 1px solid gainsboro;
+    padding: 8px;
+    color: white;
+    font-size: 17px;
+}
+#button:hover {
+    transition: 0.2s;
+    background-color: rgba(0, 128, 0, 0.9);
+}
+
+.input {
+    outline: none;
+    width: 300px;
+    margin-bottom: 10px;
+    border: none;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.6);
+    font-size: 17px;
+    height: 30px;
+}
+
+h2 {
+    margin-top: 0px;
+}
