@@ -1,13 +1,13 @@
-.materiaParticularList{
+.userList{
     flex: 4;
 }
 
-.materiaParticularListUser{
+.userListUser{
     display: flex;
     align-items: center;
 }
 
-.materiaParticularListImage{
+.userListImage{
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -15,7 +15,7 @@
     margin-right: 10px;
 }
 
-.materiaParticularListEdit{
+.userListEdit{
     border: none;
     border-radius: 10px;
     padding: 5px 10px;
@@ -25,7 +25,7 @@
     margin-right: 10px;
 }
 
-.materiaParticularListDelete{
+.userListDelete{
     color: red;
     cursor: pointer;
 }

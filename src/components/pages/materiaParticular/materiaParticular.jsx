@@ -10,7 +10,8 @@ export default function MateriaParticular() {
 
     const [nombre_materia, setNombreMateria] = useState(materiaParticular.nombre_materia);
     const [descripcion, setDescripcion] = useState(materiaParticular.descripcion);
-    const id_usuario = "619ff56d24cfbf08d311601d";
+//    const id_usuario = "619ff56d24cfbf08d311601d";
+    const id_usuario = materiaParticular.id_usuario;
 
     const handleNombreMateria = (e) =>{
         setNombreMateria(e.target.value);

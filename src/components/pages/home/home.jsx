@@ -11,14 +11,12 @@ import WidgetLong from '../../widgetLong/widgetLong'
 export default function home() {
   return (
     <div className='home'>
-        {/* <Box />
+        <Box />
         <Chart data={data_1} title='Ventas' dataKey='venta' />
         <div className='homeWidgets'>
           <WidgetSmall/>
           <WidgetLong/>
-        </div> */}
-
-        
+        </div>
     </div>
   )
 }
