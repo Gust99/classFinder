@@ -45,7 +45,8 @@ export default function NewUser() {
         setTipoUsuarioSend(e.target.value);
     }
 
-    const handleSubmit =()=>{
+    const handleSubmit = async (e)=>{
+        e.preventDefault();
         if(username != '' && password != ''){
             const requestInit ={
                 method : 'POST',
@@ -62,14 +63,15 @@ export default function NewUser() {
                 })
             }
 
-            fetch('http://localhost:3800/api/addUsuario',requestInit)
+            await fetch('http://localhost:3800/api/addUsuario',requestInit)
             .then(res => res.json())
             .then(res => {
                 if(res){
                     console.log(res.usuario);
                 }
             })
-
+            window.location.reload();
+            window.location.replace('/login');
         }
         else{
             alert('Introduzca todos los campos');
@@ -77,42 +79,40 @@ export default function NewUser() {
     }
 
     return (
-        <div className='newUser'>
-            <h1>Nuevo Usuario</h1>
-            <form className='newUserForm' onSubmit={handleSubmit}>
-                <div className='newUserItem'>
-                    <label>Nombre</label>
-                    <input onChange={handleNombre} value={nombre} type='text'/>
+        <div className='container'>
+            <form className=''>
+                <div className='form-inner'>
+                    <h2>Sign Up</h2>
+                    <div className='form-group'>
+                        <input className="input" onChange={handleNombre} value={nombre} type='text' placeholder='Nombre'/>
+                    </div>
+                    <div className='form-group'>
+                        <label>Fecha de nacimiento</label><br/>
+                        <input className="input" onChange={handleFechaNacimiento} value={fecha_nacimiento} type='date'/>
+                    </div>
+                    <div className='form-group'>
+                        <input className="input" onChange={handleContacto} value={contacto} type='text' placeholder='Contacto'/>
+                    </div>
+                    <div className='form-group'>
+                        <input className="input" type='text' onChange={handleUsername} value={username} placeholder='Username'/>
+                    </div>
+                    <div className='form-group'>
+                        <input className="input" type='password' onChange={handlePassword} value={password} placeholder='Password'/>
+                    </div>
+                    <div className='form-group'>
+                        <label>Rol</label><br/>
+                        <select className="input" onChange={handleTipo}>
+                            {
+                                tipoUsuario?
+                                (tipoUsuario.map(tipo => (
+                                    <option value={tipo._id}>{tipo.nombre}</option>
+                                )))
+                                : <option></option>
+                            }
+                        </select>
+                    </div>
+                    <button id="button"  onClick={handleSubmit}>Send</button>
                 </div>
-                <div className='newUserItem'>
-                    <label>Fecha de nacimiento</label>
-                    <input onChange={handleFechaNacimiento} value={fecha_nacimiento} type='date'/>
-                </div>
-                <div className='newUserItem'>
-                    <label>Contacto</label>
-                    <input onChange={handleContacto} value={contacto} type='text'/>
-                </div>
-                <div className='newUserItem'>
-                    <label>Username</label>
-                    <input type='text' onChange={handleUsername} value={username}/>
-                </div>
-                <div className='newUserItem'>
-                    <label>Password</label>
-                    <input type='password' onChange={handlePassword} value={password}/>
-                </div>
-                <div className='newUserItem'>
-                    <label>Tipo de usuario</label>
-                    <select onChange={handleTipo}>
-                        {
-                            tipoUsuario?
-                            (tipoUsuario.map(tipo => (
-                                <option value={tipo._id}>{tipo.nombre}</option>
-                            )))
-                            : <option></option>
-                        }
-                    </select>
-                </div>
-                <button className='newUserButton'>Crear</button>
             </form>
         </div>
     )

@@ -32,7 +32,7 @@ export default function Login() {
             .then(res => res.json())
             .then(res => {
                 if(res){
-                    let buff = new Buffer(res.token, 'base64');
+                    let buff = new Buffer(res.token.toString().split('.')[1], 'base64');
                     let usuario = buff.toString('ascii');
                     console.log(usuario);
                     localStorage.setItem('usuario',usuario);
@@ -48,7 +48,7 @@ export default function Login() {
     }
 
     return (
-        <div>
+        <div className='container'>
             <form>
                 <div className='form-inner'>
                     <h2>LOGIN</h2>

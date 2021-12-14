@@ -18,6 +18,8 @@ import NewMateriaParticular from './components/pages/materiaParticular/newMateri
 import ProfesorClaseList from './components/profesorClaseList/profesorClaseList';
 import Reserva from './components/pages/reservas/reservas';
 import NewReserva from './components/pages/reservas/newReserva';
+import Login from './components/login/login'
+import ClasesEstudiante from './components/pages/estudiante/clasesEstudiante';
 
 function App() {
   return (
@@ -26,7 +28,7 @@ function App() {
         <div className='container'>
           <SideBar />
           <Routes>
-              <Route path='/' element={<Home/>}/>
+              <Route path='/' element={<ClaseList/>}/>
               <Route path='/users' element={<UserList/>}/>
               <Route path='/user/:userId' element={<User/>}/>
               <Route path='/newUser' element={<NewUser/>}/>
@@ -39,6 +41,8 @@ function App() {
               <Route path='/clasesProfesor/:profesorId/:materiaParticularId' element={<ProfesorClaseList/>}/>
               <Route path='/Reserva' element={<Reserva/>}/>
               <Route path='/newReserva' element={<NewReserva/>}/>
+              <Route path='/login' element={<Login/>}/>
+              <Route path='/clasesEstudiante' element={<ClasesEstudiante/>}/>
           </Routes>
       </div>
     </Router>

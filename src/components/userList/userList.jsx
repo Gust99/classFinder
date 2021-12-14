@@ -19,10 +19,24 @@ useEffect(() => {
                 res.Usuarios.forEach(usuario => {
                     usuario.fecha_nacimiento = usuario.fecha_nacimiento.split(":")[0].split("T")[0]
                 });
-                
-                setData(res.Usuarios)
+                return res;
             }
         })
+        .then(res => {
+            console.log(res.Usuarios);
+            var dataAux = [{contacto: "77877629",
+            fecha_nacimiento: "2020-07-02",
+            id_tipo_usuario: "619ff52024cfbf08d3116014",
+            nombre: "Bruce",
+            password: "$2a$10$5MgwN3249w/Ob8OT0FvCaOJVfMiSZZcemyJIBvfl6FzsCBn2ACBWi",
+            username: "abc124",
+            visible: true,
+            __v: 0,
+            _id: "619ff56d24cfbf08d311601d"}]
+            setData(dataAux);
+        })
+        
+        console.log(data);
     }
     getUsuarios()
 }, [])
@@ -69,7 +83,15 @@ const columns = [
         <div className='userList'>
             <DataGrid
                 getRowId={(row)=>row._id}
-                rows={data}
+                rows={[{contacto: "77877629",
+                fecha_nacimiento: "2020-07-02",
+                id_tipo_usuario: "619ff52024cfbf08d3116014",
+                nombre: "Bruce",
+                password: "$2a$10$5MgwN3249w/Ob8OT0FvCaOJVfMiSZZcemyJIBvfl6FzsCBn2ACBWi",
+                username: "abc124",
+                visible: true,
+                __v: 0,
+                _id: "619ff56d24cfbf08d311601d"}]}
                 columns={columns}
                 pageSize={5}
                 rowsPerPageOptions={[5]}

@@ -5,23 +5,19 @@ export default function NewMateriaParticular() {
 
     const [nombre_materia, setNombreMateria] = useState('');
     const [descripcion, setDescripcion] = useState('');
-    const [usuario, setUsuario] = useState([]);
-    const [usuarioSend, setUsuarioSend] = useState("");
+    // const [usuario, setUsuario] = useState([]);
+    // const [usuarioSend, setUsuarioSend] = useState("");
     //const id_usuario = "619ff56d24cfbf08d311601d";
 
+    const [usuario, setUsuario] = useState('');
+
     useEffect(() => {
-        const getUsuario = ()=>{
-            fetch('http://localhost:3800/api/getProfesores')
-            .then(res => res.json())
-            .then(res => {
-                if(res){
-                    console.log(res.Usuarios);
-                    setUsuario(res.Usuarios);
-                    setUsuarioSend(res.Usuarios[0]._id);
-                }
-            })
+        try {
+            setUsuario(JSON.parse(localStorage.getItem('usuario')));
+            console.log(usuario);
+        } catch(err) {
+
         }
-        getUsuario()
     }, [])
 
     const handleNombreMateria = (e) =>{
@@ -31,11 +27,12 @@ export default function NewMateriaParticular() {
         setDescripcion(e.target.value);
     }
 
-    const handleUsuario = (e) =>{
-        setUsuarioSend(e.target.value);
-    }
+    // const handleUsuario = (e) =>{
+    //     setUsuarioSend(e.target.value);
+    // }
 
-    const handleSubmit =()=>{
+    const handleSubmit =(e)=>{
+        e.preventDefault();
         if(nombre_materia != '' && descripcion != ''){
             const requestInit ={
                 method : 'POST',
@@ -45,7 +42,7 @@ export default function NewMateriaParticular() {
                 body : JSON.stringify({
                     nombre_materia: nombre_materia,
                     descripcion: descripcion,
-                    id_usuario: usuarioSend
+                    id_usuario: usuario.sudId
                 })
             }
 
@@ -75,7 +72,7 @@ export default function NewMateriaParticular() {
                     <label>Descripcion</label>
                     <input type='text' onChange={handleDescripcion} value={descripcion}/>
                 </div>
-                <div className='newMateriaParticularItem'>
+                {/* <div className='newMateriaParticularItem'>
                     <label>Profesor</label>
                     <select onChange={handleUsuario}>
                         {
@@ -86,7 +83,7 @@ export default function NewMateriaParticular() {
                             : <option></option>
                         }
                     </select>
-                </div>
+                </div> */}
                 <button className='newMateriaParticularButton'>Crear</button>
             </form>
         </div>

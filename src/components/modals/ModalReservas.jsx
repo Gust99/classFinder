@@ -7,9 +7,15 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 export default function ModalReservas(clase) {  
 
+  const [idEstudiante, setIdEstudiante] = useState([]);
+  const [usuario, setUsuario] = useState([]);
 
   const [data2, setData2] = useState([]);
     useEffect(() => {
+      try {
+        setUsuario(JSON.parse(localStorage.getItem('usuario')));
+      } catch(err){}
+
         const getClases = () =>{
             fetch('http://localhost:3800/api/getClase2/'+aux2)
             .then(res => res.json())
@@ -22,6 +28,11 @@ export default function ModalReservas(clase) {
             })
         }
         getClases()
+
+        console.log(localStorage.getItem('usuario'));
+
+        // setIdEstudiante(localStorage.getItem('usuario'));
+
     }, [])
     
     //MODAL
@@ -37,7 +48,7 @@ export default function ModalReservas(clase) {
     const [tiempo, setTiempo] = React.useState(0);
     const [costo, setCosto] = React.useState(0);
     const [aux, setAux] = React.useState(clase);
-    const aux2 = Object.values(aux);
+    const aux2 = Object.values(aux)[0];
 
     const handleInputChange = (e) => {
         setTiempo(e.target.value)
@@ -45,7 +56,8 @@ export default function ModalReservas(clase) {
     };
 
 
-    const handleSubmit =()=>{
+    const handleSubmit =(e)=>{
+      e.preventDefault();
         if(tiempo != '' && costo != ''){
             const requestInit ={
                 method : 'POST',
@@ -56,12 +68,16 @@ export default function ModalReservas(clase) {
                     tiempo: tiempo,
                     costo_total: costo,
                     id_clase: aux2,
+                    id_usuario: usuario.sudId
                 })
             }
             fetch('http://localhost:3800/api/addReserva',requestInit)
             .then(res => res.json())
             .then(res => {
-                if(res){console.log(res.tiempo);}
+                if(res){
+                  console.log(res.tiempo);
+                  window.location.replace('/');
+                }
             })
     
         }

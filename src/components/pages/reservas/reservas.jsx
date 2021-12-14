@@ -11,9 +11,9 @@ const [clases, setClases] = useState([]);
 const [tiempo, setTiempo] = useState("");
 const [costoTotal, setCostoTotal] = useState("");
 
-const handleClase = (e) =>{
-    setClase(e.target.value);
-}
+// const handleClase = (e) =>{
+//     setClase(e.target.value);
+// }
 const handleReserva = (e) =>{
     setReserva(e);
 }

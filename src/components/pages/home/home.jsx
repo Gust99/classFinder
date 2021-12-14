@@ -8,15 +8,12 @@ import { data_2 } from '../../../dataTest_2'
 import WidgetSmall from '../../widgetSmall/widgetSmall'
 import WidgetLong from '../../widgetLong/widgetLong'
 
+import ClaseList from '../../claseList/claseList'
+
 export default function home() {
   return (
     <div className='home'>
-        <Box />
-        <Chart data={data_1} title='Ventas' dataKey='venta' />
-        <div className='homeWidgets'>
-          <WidgetSmall/>
-          <WidgetLong/>
-        </div>
+        <ClaseList/>
     </div>
   )
 }

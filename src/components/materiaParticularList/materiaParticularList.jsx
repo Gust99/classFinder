@@ -9,21 +9,27 @@ import { DeleteOutlineOutlined } from "@material-ui/icons"
 export default function MateriaParticularList() {
     const [data, setData] = useState([]);
     const location = useLocation();
-  //  const materiaParticular = location.state.materiaParticularSend;
-  //  const id_usuario = materiaParticular.id;
-    const id_usuario = "61a2256e6791151df4f0a508";
+    //  const materiaParticular = location.state.materiaParticularSend;
+    //  const id_usuario = materiaParticular.id;
+    let usuario = null;
     
-    useEffect(() => {
-        const getMateriasProfesor = () =>{
-            fetch('http://localhost:3800/api/getMateriasProfesor/'+id_usuario)
-            .then(res => res.json())
-            .then(res => {
-                if(res) {
-                    setData(res.materiasProfesor)
-                }
-            })
+    useEffect(async () => {
+        try {
+            usuario = JSON.parse(localStorage.getItem('usuario'));
+
+            const getMateriasProfesor = () =>{
+                fetch('http://localhost:3800/api/getMateriasProfesor/'+usuario.sudId)
+                .then(res => res.json())
+                .then(res => {
+                    if(res) {
+                        setData(res.materiasProfesor)
+                    }
+                })
+            }
+            getMateriasProfesor()
+        } catch(err) {
+            alert('Usuario no encontrado');
         }
-        getMateriasProfesor()
     }, [])
     
     const handleDelete = (id) =>{
@@ -73,7 +79,7 @@ export default function MateriaParticularList() {
             renderCell: (params) =>{
                 return(
                     <>  
-                        <Link to={"/clasesProfesor/"+id_usuario+"/"+params.row._id} state={{ claseSend : params.row }}>
+                        <Link to={"/clasesProfesor/"+params.row.id_usuario+"/"+params.row._id} state={{ claseSend : params.row }}>
                             <button className='materiaParticularListEdit'>Ver Clases</button>
                         </Link>
                     </>
@@ -92,6 +98,7 @@ export default function MateriaParticularList() {
                     rowsPerPageOptions={[5]}
                     checkboxSelection
                 />
+                <Link to={"/newMateriaParticular/"}>+ Add</Link>
             </div>
         )
 }

@@ -11,9 +11,9 @@ export default function NewReserva() {
     const [tiempo, setTiempo] = useState("");
     const [costoTotal, setCostoTotal] = useState("");
 
-    const handleClase = (e) =>{
-        setClase(e.target.value);
-    }
+    // const handleClase = (e) =>{
+    //     setClase(e.target.value);
+    // }
     const handleTiempo = (e) =>{
         setTiempo(e.target.value);
     }

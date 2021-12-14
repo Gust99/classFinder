@@ -1,3 +1,9 @@
+.container {
+    flex: 4;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
 .form-inner {
     padding: 55px;
     border: 1px solid lightgray;
