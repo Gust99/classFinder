@@ -18,14 +18,13 @@ import NewMateriaParticular from './components/pages/materiaParticular/newMateri
 
 import Reserva from './components/pages/reservas/reservas';
 import NewReserva from './components/pages/reservas/newReserva';
-import Login from './components/login/login';
 
 function App() {
   return (
     <Router>
         <Topbar />
         <div className='container'>
-          {/* <SideBar /> */}
+          <SideBar />
           <Routes>
               <Route path='/' element={<Home/>}/>
               <Route path='/users' element={<UserList/>}/>
@@ -39,7 +38,6 @@ function App() {
               <Route path='/newMateriaParticular' element={<NewMateriaParticular/>}/>
               <Route path='/Reserva' element={<Reserva/>}/>
               <Route path='/newReserva' element={<NewReserva/>}/>
-              <Route path='/login' element={<Login/>}/>
           </Routes>
       </div>
     </Router>
